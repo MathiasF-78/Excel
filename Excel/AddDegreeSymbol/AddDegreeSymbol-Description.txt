@@ -1,0 +1,1 @@
+Lägger till en grader-symbol " ° "efter text inom markerade celler.
