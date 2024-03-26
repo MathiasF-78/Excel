@@ -1,6 +1,3 @@
-För detta makro, här är ett exempel på hur du kan strukturera din `README.md` för att beskriva vad det gör och hur det används:
-
-```markdown
 # AddPrefix Makro
 
 Detta VBA-makro för Excel, `AddPrefix`, låter användare lägga till en textsträng som ett prefix till valda cellers innehåll. Detta kan vara särskilt användbart när du behöver markera eller kategorisera data på ett enhetligt sätt, till exempel genom att lägga till en kod eller en kort beskrivning framför befintlig text.
