@@ -34,6 +34,3 @@ Rng.Value = addStr & " " & Rng.Value
 ```
 
 Genom att följa dessa steg, kan du effektivt lägga till prefix i ditt Excel-ark med hjälp av `AddPrefix`-makrot.
-```
-
-Denna README.md ger en översikt av makrots funktion, dess användning, och tips för anpassning. Modifiera innehållet efter behov baserat på makrots specifika beteende och dina önskemål.
