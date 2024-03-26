@@ -1,0 +1,32 @@
+Attribute VB_Name = "List_All_The_Files_Within_Path"
+Sub List_All_The_Files_Within_Path()
+ 
+Dim Row_No As Integer
+Dim No_Of_Files As Integer
+Dim kk25 As Integer
+Dim File_Path As String
+ 
+File_Path = "C:My Documents"
+ 
+Row_No = 36
+ 
+'Lists all the files in the current directory
+ 
+With Application.FileSearch
+.NewSearch
+.LookIn = File_Path
+.FileName = "*.*"
+.SearchSubFolders = False
+.Execute
+ 
+    No_Of_Files = .FoundFiles.count
+ 
+    For kk25 = 1 To No_Of_Files
+       Worksheets("Sheet1").Cells(kk25 + 5, 15).Value = .FoundFiles(kk25)
+ 
+    Next kk25
+ 
+End With
+ 
+End Sub
+ 
