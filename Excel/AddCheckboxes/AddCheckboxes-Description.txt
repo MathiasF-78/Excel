@@ -1,1 +1,0 @@
-Skapar kryssrutor i markerade celler
