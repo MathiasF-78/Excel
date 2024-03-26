@@ -1,4 +1,4 @@
-AddChartTitle Macro
+## AddChartTitle Macro
 
 Beskrivning
 Detta makro lägger till en rubrik till det markerade diagrammet i Excel.
