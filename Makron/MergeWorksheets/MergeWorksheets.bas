@@ -1,0 +1,56 @@
+Attribute VB_Name = "MergeWorksheets"
+Sub MergeWorksheets()
+    Dim wrk As Workbook 'Workbook object - Always good to work with object variables
+    Dim sht As Worksheet 'Object for handling worksheets in loop
+    Dim trg As Worksheet 'Master Worksheet
+    Dim rng As Range 'Range object
+    Dim colCount As Integer 'Column count in tables in the worksheets
+     
+    Set wrk = ActiveWorkbook 'Working in active workbook
+     
+    For Each sht In wrk.Worksheets
+        If sht.name = "Master" Then
+            MsgBox "There is a worksheet called as 'Master'." & vbCrLf & _
+            "Please remove or rename this worksheet since 'Master' would be" & _
+            "the name of the result worksheet of this process.", vbOKOnly + vbExclamation, "Error"
+            Exit Sub
+        End If
+    Next sht
+     
+     'We don't want screen updating
+    Application.ScreenUpdating = False
+     
+     'Add new worksheet as the last worksheet
+    Set trg = wrk.Worksheets.Add(After:=wrk.Worksheets(wrk.Worksheets.count))
+     'Rename the new worksheet
+    trg.name = "Master"
+     'Get column headers from the first worksheet
+     'Column count first
+    Set sht = wrk.Worksheets(1)
+    colCount = sht.Cells(1, 255).End(xlToLeft).Column
+     'Now retrieve headers, no copy&paste needed
+    With trg.Cells(1, 1).Resize(1, colCount)
+        .Value = sht.Cells(1, 1).Resize(1, colCount).Value
+         'Set font as bold
+        .Font.Bold = True
+    End With
+     
+     'We can start loop
+    For Each sht In wrk.Worksheets
+         'If worksheet in loop is the last one, stop execution (it is Master worksheet)
+        If sht.Index = wrk.Worksheets.count Then
+            Exit For
+        End If
+         'Data range in worksheet - starts from second row as first rows are the header rows in all worksheets
+        Set rng = sht.Range(sht.Cells(2, 1), sht.Cells(65536, 1).End(xlUp).Resize(, colCount))
+         'Put data into the Master worksheet
+        trg.Cells(65536, 1).End(xlUp).Offset(1).Resize(rng.Rows.count, rng.Columns.count).Value = rng.Value
+    Next sht
+     'Fit the columns in Master worksheet
+    trg.Columns.AutoFit
+     
+     'Screen updating should be activated
+    Application.ScreenUpdating = True
+End Sub
+
+
