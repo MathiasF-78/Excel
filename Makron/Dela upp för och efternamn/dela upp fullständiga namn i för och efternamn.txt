@@ -1,0 +1,60 @@
+Thomas
+
+=VÄNSTER(B3;HITTA(" ";B3)-1)
+=HÖGER(B3;LÄNGD(C3)-HITTA(" ";C2))
+
+Sub Formula_Property()
+
+  'Formula is a string of text wrapped in quotation marks
+  'Starts with an = sign
+  Range("B10").Formula = "=SUM(B4:B9)"
+
+End Sub
+
+Option Explicit
+
+Sub dela_fullstandigt_namn()
+
+  'Formula is a string of text wrapped in quotation marks
+  'Starts with an = sign
+  Range("B10").Formula = "=SUM(B4:B9)"
+
+End Sub
+
+Sub Macro10()
+'
+' Macro10 Macro
+'
+'
+    Range("B14").Select
+    ActiveCell.FormulaR1C1 = _
+        "=IFERROR(VLOOKUP(R[-10]C[-1],Table!R2C10:R370C11,2,FALSE),"""")"
+    Range("B15").Select
+    ActiveCell.FormulaR1C1 = "=""Total Sales: "" & TEXT(R[-5]C,""$#,###"")"
+    Range("B14").Select
+End Sub
+-------------------
+supplierno
+supplier.name
+
+
+person.
+person.firstname
+person.lastname
+person.title
+person.company
+person.docode
+person.supplier
+
+
+
+person where person.supplier=project.supplier
+person where person.supplier=project.supplier or person.company=project.supplier
+
+
+
+
+estate.estatecode
+
+
+dokument proejkt visar projektkod
