@@ -1,5 +1,3 @@
-# vba
-
 # Importera Makro till Excel
 
 Denna guide går igenom hur du importerar ett makro till Microsoft Excel. Följ dessa steg för att snabbt och enkelt lägga till ett nytt makro till ditt Excel-ark.
