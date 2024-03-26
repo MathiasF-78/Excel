@@ -1,17 +1,17 @@
 ## AddChartTitle Macro
 
-### Description
-This macro adds a title to the selected chart in Excel.
+### Beskrivning
+Detta makro lägger till en rubrik till det markerade diagrammet i Excel.
 
-### Usage
-1. Select the chart to which you want to add the title.
-2. Run the macro.
-3. Enter the desired title in the dialog box that appears.
-4. Click OK.
+### Användning
+1. Markera diagrammet där du vill lägga till rubriken.
+2. Kör makrot.
+3. Skriv in den önskade rubriken i dialogrutan som visas.
+4. Klicka på OK.
 
-### Example
-If you have a chart selected and enter "Sales Data" as the title, the title "Sales Data" will be added above the chart.
+### Exempel
+Om du har ett diagram markerat och anger "Försäljningsdata" som rubrik kommer rubriken "Försäljningsdata" att läggas till ovanför diagrammet.
 
-### Notes
-- If you don't enter any text in the dialog box, no title will be added.
-- The macro handles errors by displaying an error message box if anything goes wrong during its execution.
+### Anmärkningar
+- Om du inte anger någon text i dialogrutan kommer ingen rubrik att läggas till.
+- Makrot hanterar fel genom att visa en felmeddelanderuta om något går fel under körningen.
