@@ -1,0 +1,45 @@
+Attribute VB_Name = "SplitCell"
+Sub SplitCell()
+    Dim cell As Range
+    Dim delimiter As String
+    Dim splitText() As String
+    Dim i As Integer
+    Dim createNewColumn As VbMsgBoxResult
+
+    ' Fråga användaren efter tecknet som ska användas för att dela upp cellerna
+    delimiter = InputBox("Ange tecknet som ska användas för att dela upp cellerna." & vbCrLf & _
+                         "OBS! Den extraherade datan kommer att skrivas in i kolumnen till höger om ursprungsdatan.", "Delimiter Input")
+
+    ' Fråga användaren om en ny kolumn ska skapas innan data extraheras
+    createNewColumn = MsgBox("Vill du skapa en ny kolumn innan data extraheras?", vbYesNo + vbQuestion, "Create New Column")
+
+    ' Loopa igenom varje vald cell
+    For Each cell In Selection
+        ' Kontrollera om cellen innehåller det angivna tecknet
+        If InStr(1, cell.Value, delimiter) > 0 Then
+            ' Om användaren valde att skapa en ny kolumn innan data extraheras
+            If createNewColumn = vbYes Then
+                ' Infoga en ny kolumn till höger om den nuvarande cellen
+                cell.Offset(0, 1).EntireColumn.Insert
+            End If
+            
+            ' Dela upp cellens värde baserat på det angivna tecknet
+            splitText = Split(cell.Value, delimiter)
+            
+            ' Sätt det första delen till den ursprungliga cellen
+            cell.Value = splitText(0)
+            
+            ' Skriv den andra delen i den nya kolumnen eller direkt till höger om den nuvarande cellen beroende på användarens val
+            If createNewColumn = vbYes Then
+                cell.Offset(0, 1).Value = splitText(1)
+            Else
+                cell.Offset(0, 1).Value = splitText(1)
+            End If
+        Else
+            ' Om tecknet inte finns, ge ett meddelande till användaren
+            MsgBox "Tecknet kunde inte hittas i cellen: " & cell.Address
+        End If
+    Next cell
+End Sub
+
+
