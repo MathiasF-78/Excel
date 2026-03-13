@@ -1,0 +1,31 @@
+Sub MarkeraDubletter()
+    Dim rng As Range
+    Dim cell As Range
+    Dim dict As Object
+    Dim data As Variant
+    Dim i As Long
+
+    Set rng = Selection
+    Set dict = CreateObject("Scripting.Dictionary")
+
+    ' Läs in allt i en array (snabbt!)
+    data = rng.Value
+
+    ' Första passet: räkna förekomster
+    For i = 1 To UBound(data, 1)
+        If data(i, 1) <> "" Then
+            If dict.Exists(data(i, 1)) Then
+                dict(data(i, 1)) = dict(data(i, 1)) + 1
+            Else
+                dict.Add data(i, 1), 1
+            End If
+        End If
+    Next i
+
+    ' Andra passet: markera dubletter
+    For Each cell In rng
+        If dict(cell.Value) > 1 Then
+            cell.Interior.ColorIndex = 36
+        End If
+    Next cell
+End Sub
